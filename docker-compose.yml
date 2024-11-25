@@ -1,0 +1,8 @@
+services:
+  python-dev:
+    image: python:latest
+    container_name: python-dev-container
+    volumes: 
+      - .:/home/app
+
+    entrypoint: "/bin/sh -c 'pip install -r /home/app/requirements.txt; tail -f /dev/null'"
