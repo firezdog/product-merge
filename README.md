@@ -30,4 +30,38 @@ This repository provides a **Proof of Concept (POC)** for processing and updatin
 
 ---
 
+## Test Files
+
+We create the following products:
+
+id | supplier_id  | price \
+-------------------------- \
+1  | SUPPLIER-1-1 | 199.99 \
+2  | SUPPLIER-1-2 | 299.99 \
+3  | SUPPLIER-1-3 | 399.99 \
+4  | SUPPLIER-2-1 | 499.99 \
+5  | SUPPLIER-2-2 | 599.99
+
+We then do the following vendor updates
+
+1. update SUPPLIER-1-1's price to 1099.99
+2. update SUPPLIER-1-2's price to 2099.99
+3. update SUPPLIER-1-3's price to 5099.99
+4. insert SUPPLIER-NEW-1 with price 25.52
+5. insert SUPPLIER-NEW-2 with price 3.14
+6. update product 4 (SUPPLIER-2-1) with new supplier_id SUPPLIER-NEW-3
+7. update product 5 (SUPPLIER-2-2) with new supplier_id SUPPLIER-NEW-4 and new price 3.14 (notice here we supply an updated price and above we do not)
+
+Final state should be
+
+id | supplier_id  | price \
+-------------------------- \
+1  | SUPPLIER-1-1 | 1099.99 \
+2  | SUPPLIER-1-2 | 2099.99 \
+3  | SUPPLIER-1-3 | 5099.99 \
+4  | SUPPLIER-NEW-3 | 499.99 \
+5  | SUPPLIER-NEW-4 | 3.14 \
+6  | SUPPLIER-NEW-1 | 25.52 \
+7  | SUPPLIER-NEW-2 | 3.14
+
 **Generated with the help of OpenAI's ChatGPT.**
